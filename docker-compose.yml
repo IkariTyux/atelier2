@@ -1,0 +1,7 @@
+services:
+  pandoc:
+    image: gitlab.tools:5050/epsi/atelier2
+    container_name: atelier2_pandoc
+    ports:
+      - 8070:80
+    restart: unless-stopped
