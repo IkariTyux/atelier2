@@ -1,0 +1,16 @@
+build-job:
+  stage: build
+  script:
+    - docker build -t gitlab.tools:5050/epsi/atelier2 .
+
+test-job:
+  stage: test
+  script:
+    - docker-compose up -d
+    - nmap -p 8070 localhost
+    - curl -LO http://localhost:8070/index.docx
+
+deploy-job:
+  stage: deploy
+  script:
+    - docker push gitlab.tools:5050/epsi/atelier2
